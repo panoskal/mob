@@ -17,6 +17,7 @@ $cssfiles = array(
     'jquery.mCustomScrollbar.css',
     'latofonts.css',
     'latostyle.css',
+    'kanitfonts.css',
     'font-awesome.min.css',
     'slicknav.min.css',
     'main.css');

@@ -101,7 +101,7 @@ $winners=Winner::getAllWinners();
         <![endif]-->
     </head>
 
-    <body class="home">
+    <body class="main">
         <?php if ($session->is_logged_in()) { ?>
         <div class="gotoadmin"><a href="adminpanel"><i class="fa fa-cog" aria-hidden="true"></i></a></div>
         <?php } ?>
