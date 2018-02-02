@@ -64,11 +64,30 @@ jQuery(function ($) {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    $("#sortable").sortable({
+//    $("#sortable").sortable({
+//        stop: function (event, ui) {
+//            $(".menu-resort").css("display", "inline-block");
+//        }
+//    });
+//
+     $('#sortable').sortable({
+        connectWith: '#sortable',
+        beforeStop: function(ev, ui) {
+            if ($(ui.item).hasClass('hasItems') && $(ui.placeholder).parent()[0] != this) {
+                $(this).sortable('cancel');
+            }
+        },stop: function (event, ui) {
+            $(".menu-resort").css("display", "inline-block");
+        }
+    });
+    $('ul.sortable').sortable({
+        connectWith: 'ul.sortable',
         stop: function (event, ui) {
             $(".menu-resort").css("display", "inline-block");
         }
     });
+
+
     $("#sortable").disableSelection();
 
     $(document).on('click', '.config-edit', function () {
@@ -290,17 +309,30 @@ jQuery(function ($) {
     });
 
     $(document).on('click', '.menu-resort', function (e) {
-        var updateArr = [],
-            pos = 0;
+        var updateArr = [],updateArrSub ={},
+            pos = 0,possub=0,t ,parentel;
         $('#menuErrMsgsout').empty();
-        for (var i = 1; i < ($("#sortable li").length + 1); i++) {
-            updateArr[pos] = $("#sortable li:nth-child(" + i + ")").find('.page-element-row .slugvalue').text();
+        for (var i = 1; i < ($("#sortable li.main").length + 1); i++) {
+            parentel=$("#sortable li.main:nth-child(" + i + ")").find('.page-element-row .slugvalue').text();
+
+            updateArr[pos] = parentel;
+            if ( $("#sortable li.main:nth-child(" + i + ") .sortable").length ) {
+                updateArrSub[parentel]=[];
+                for (t = 1; t < ($("#sortable li.main:nth-child(" + i + ") .sortable li").length + 1); t++) {
+                    updateArrSub[parentel][possub] = $("#sortable li.main:nth-child(" + i + ")  .sortable li:nth-child(" + t + ")").find('.page-element-row .subslugvalue').text();
+                    possub++;
+                }
+                possub=0;
+            }
             pos++;
         }
+
         var values = {
             'action': 'resortMenuItems',
-            'updateArr': updateArr
+            'updateArr': updateArr,
+            'updateArrSub':updateArrSub,
         };
+        console.log(updateArrSub);
         $.ajax({
             type: "POST",
             data: values,
@@ -310,17 +342,18 @@ jQuery(function ($) {
             },
             error: function (request, status, error) {
                 var jsonObj = request.responseText;
-                var obj = JSON.parse(jsonObj);
-                var errString = "";
-                for (var key in obj) {
-                    if (obj.hasOwnProperty(key)) {
-                        errString += obj[key] + '<br>';
-                    }
-                }
-                $('#menuErrMsgsout').append('<span class="requred-fields"><b>ERROR: </b>' + errString + '</span>');
-                $("html, body").animate({
-                    scrollTop: "0"
-                }, 500);
+                alert(jsonObj);
+//                var obj = JSON.parse(jsonObj);
+//                var errString = "";
+//                for (var key in obj) {
+//                    if (obj.hasOwnProperty(key)) {
+//                        errString += obj[key] + '<br>';
+//                    }
+//                }
+//                $('#menuErrMsgsout').append('<span class="requred-fields"><b>ERROR: </b>' + errString + '</span>');
+//                $("html, body").animate({
+//                    scrollTop: "0"
+//                }, 500);
             }
         });
     });

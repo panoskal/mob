@@ -424,29 +424,47 @@ if (isset($_POST['action']) && $_POST['action']==='menuItemNEW') {
     $success = true;
     $insertMenuArr = array();
     $errMessages = array();
-
+    $insertMenuArr['is_not_link']=0;
     if (empty($_POST['order'])||$_POST['order']=="none") {
         $errMessages['orderErr'] = "Please select the display order for the menu item";
         $success = false;
     } else {
         $insertMenuArr['order'] = Sanitize::processInt($_POST['order']);
-        $orderExists = Menu::getSingleMenuByOrder($insertMenuArr['order']);
-        if (!empty($orderExists)) {
-            $errMessages['orderErr'] = "A menu item with this order, already exist. Please insert an other one...";
-            $success=false;
-        }
+//        $orderExists = Menu::getSingleMenuByOrder($insertMenuArr['order']);
+//        if (!empty($orderExists)) {
+//            $errMessages['orderErr'] = "A menu item with this order, already exist. Please insert an other one...";
+//            $success=false;
+//        }
     }
-    if (empty($_POST['slug'])||$_POST['slug']=="none") {
+    if (!isset($_POST['slug'])||$_POST['slug']=="none") {
         $errMessages['slugErr'] = "Please select the menu slug for the menu item";
         $success = false;
     } else {
-        $insertMenuArr['slug'] = Sanitize::processString($_POST['slug']);
-        $slugExists = Menu::getSingleMenuBySlug($insertMenuArr['slug']);
-        if (!empty($slugExists)) {
-            $errMessages['slugErr'] = "A menu item with this slug, already exist. Please insert an other one...";
-            $success=false;
+        if ($_POST['slug']=="0") {//element is an parent slug
+            if(isset($_POST['place_holder_name'])&&!empty($_POST['place_holder_name'])){
+                $insertMenuArr['slug'] = Sanitize::processString($_POST['place_holder_name']);
+            }else{
+                $errMessages['slugErr'] = "You have selected to add a 'placeholder Item' Please select a name";
+                $success=false;
+            }
+            if (isset($_POST['is_not_link'])) {
+                $insertMenuArr['is_not_link']=1;
+            }
+        }else{
+            $insertMenuArr['slug'] = Sanitize::processString($_POST['slug']);
+            $slugExists = Menu::getSingleMenuBySlug($insertMenuArr['slug']);
+            if (!empty($slugExists)) {
+                $errMessages['slugErr'] = "A menu item with this slug, already exist. Please insert an other one...";
+                $success=false;
+            }
         }
     }
+    if(isset($_POST['has_parent'])&&!empty($_POST['has_parent'])&&$_POST['has_parent']!="none"){
+        $insertMenuArr['has_parent']=$_POST['has_parent'];
+    }else{
+         $insertMenuArr['has_parent']=0;
+    }
+
     if ($success) {
         $dbSuccess = true;
         $successMessages = array();
@@ -475,6 +493,7 @@ if (isset($_POST['action']) && $_POST['action']==='resortMenuItems') {
         $database->beginTransaction();
         $data=Menu::getAllMenuItems();
         $resorter=1;
+        $resortersub=1;
         $debug="";
         if(!empty($data)&&!empty($updatearr)){
             foreach($updatearr as $slug){
@@ -485,8 +504,20 @@ if (isset($_POST['action']) && $_POST['action']==='resortMenuItems') {
                     }
                 }
             }
+            if(isset($_POST["updateArrSub"])&&!empty($_POST["updateArrSub"])){
+                $updateArrSub=$_POST["updateArrSub"];
+                foreach($updateArrSub as $parent=>$el){
+                   foreach($el as $elem=>$kid){
+                        Menu::updateOrderSubMenu(Sanitize::processString($kid), $resortersub,Sanitize::processString($parent)) ;
+                        $resortersub++;
+                    }
+                    $resortersub=1;
+                }
+            }
         }
+
         $_POST = "";
+
         if($database->ReturnError()){
             $database->cancelTransaction();
             $errMessages['fail'] = "The items have not been resorted";

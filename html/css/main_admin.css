@@ -186,7 +186,10 @@ button#login:hover {
     color: rgba(0, 0, 0, 0.6);
 }
 
-
+.sortable.ui-sortable {
+    list-style: none;
+    padding: 0 10px 10px;
+}
 /*--------------------------------------------------------
 ----------------------COMMON CONTENT----------------------
 ---------------------------------------------------------*/
@@ -276,9 +279,17 @@ button#login:hover {
     font-weight: 800;
 }
 
-.page-element-row.line-colored,.slag-default.line-colored {
+.page-element-row.line-colored, .ui-state-default.line-colored,.slag-default.line-colored {
     background: rgba(206, 78, 150, 0.1);
 }
+.page-element-row.line-coloredsub,.slag-default.line-coloredsub {
+    background: rgba(79, 151, 201,0.3);
+}
+.page-element-row.nosub,.slag-default.nosub {
+    background: rgba(79, 151, 201,0.6);
+}
+
+
 .requred-fields {
     font-weight: normal;
     margin-left: 11px;
@@ -295,7 +306,7 @@ button#login:hover {
     color:lightseagreen;
     cursor: pointer;
 }
-.link-center .fa-trash,.link-center.fa-trash{
+.link-center .fa-trash,.link-center.fa-trash,.link-center .fa-link,.link-center.fa-link,.link-center .fa-unlink,.link-center.fa-unlink{
     color:mediumvioletred;
     cursor: pointer;
 }
@@ -331,7 +342,7 @@ button#login:hover {
     color: lightseagreen;
     cursor: pointer;
 }
-.config-delete .fa-trash, .winner-delete .fa-trash {
+.config-delete .fa-trash, .winner-delete .fa-trash,.config-delete .fa-link, .winner-delete .fa-link,.config-delete .fa-unlink, .winner-delete .fa-unlink {
     color: mediumvioletred;
     cursor: pointer;
 }

@@ -4,10 +4,12 @@ class Menu {
 
     public $slug;
     public $order;
+    public $has_parent;
+    public $is_not_link;
 
     public static function getAllMenuItems() {
         global $database;
-        $query = "SELECT * FROM cms_menu ORDER BY `order`";
+        $query = "SELECT * FROM cms_menu ORDER BY has_parent DESC,`order`";
         $result_array = $database->getObj($query, 'Menu');
         return !empty($result_array) ? $result_array : false;
     }
@@ -26,9 +28,11 @@ class Menu {
     }
     public static function insertMenuItems($pagearray) {
         global $database;
-        $query = "INSERT INTO cms_menu (slug, `order`) VALUES (:slug, :order)";
+        $query = "INSERT INTO cms_menu (slug,is_not_link,has_parent, `order`) VALUES (:slug, :is_not_link,:has_parent, :order)";
         $database->insertRow($query, array(
             ':slug' => $pagearray['slug'],
+            ':is_not_link' => $pagearray['is_not_link'],
+            ':has_parent' => $pagearray['has_parent'],
             ':order' => $pagearray['order']
         ));
         $result = $database->getInsertedId();
@@ -45,6 +49,16 @@ class Menu {
         $query = "UPDATE cms_menu SET `order`=:order WHERE slug=:slug";
         $result = $database->updateRow($query, array(
             ':order'          => $order,
+            ':slug'           => $slug,
+        ));
+        return $result;
+    }
+        public static function updateOrderSubMenu($slug, $order, $parent) {
+        global $database;
+        $query = "UPDATE cms_menu SET `order`=:order , has_parent=:has_parent WHERE slug=:slug";
+        $result = $database->updateRow($query, array(
+            ':order'          => $order,
+            ':has_parent'          => $parent,
             ':slug'           => $slug,
         ));
         return $result;
