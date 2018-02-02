@@ -6,13 +6,534 @@
     top: 5px;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Kanit:400,500&subset=latin,vietnamese);
-body{
+body {
     font-family: 'Kanit', sans-serif;
-	background-color:#013e74;
-    color:#fff;
-    font-size:18px;
-	padding-bottom: 0px;
+    background-color: #013e74;
+    color: #fff;
+    font-size: 18px;
+    padding-bottom: 0px;
     overflow-x: hidden;
-    font-weight:400;
+    font-weight: 400;
+}
+
+b,
+strong {
+    font-weight: 500;
+}
+
+.alert {
+    margin-bottom: 0px;
+}
+
+.navbar-default {
+    background-image: linear-gradient(to bottom, #fff 0px, #e2e0e1 100%);
+    border-radius: 0px;
+    border-bottom: 1px solid #b9b7b8;
+    box-shadow: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #242526;
+    line-height: 20px;
+    background-image: linear-gradient(to bottom, #fff 0px, #e2e0e1 100%);
+    background-repeat: repeat-x;
+    transition-duration: 0.5s;
+}
+
+.navbar-default .in .navbar-nav > li > a,
+.navbar-default .collapsing .navbar-nav > li > a {
+    background-image: none;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #0055a4;
+    transition-duration: 0.5s;
+}
+
+.navbar-default .navbar-nav > .active > a {
+    background-image: none;
+    box-shadow: none;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    background-color: transparent;
+    color: #0055a4;
+}
+
+.navbar-default .in .navbar-nav > li > a:hover,
+.navbar-default .collapsing .navbar-nav > li > a:hover,
+.navbar-default .collapsing .navbar-nav > .active > a,
+.navbar-default .in .navbar-nav > .active > a {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ff0000;
+}
+
+.navbar-default .navbar-brand {
+    height: auto;
+    padding: 10px 15px;
+}
+
+.faqpage h3,
+.alertaspage h3 {
+    color: #d52b1e;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+#terms_container h2,
+#faq_container h2 {
+    text-align: center;
+    color: #d52b1e;
+}
+
+a {
+    color: #e60000;
+    transition-duration: 0.5s;
+}
+
+a:hover,
+a:focus {
+    color: #000;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+.scrollable {
+    height: 330px;
+    padding-right: 10px;
+}
+
+.hr {
+    display: none;
+}
+
+.couponspage .mainclass {
+    text-align: center;
+}
+
+.faqpage p {
+    padding-left: 25px;
+}
+
+tr.name_desc {
+    background-color: #d5d5d5;
+    background-image: linear-gradient(to bottom, #737373 0px, #d5d5d5 100%);
+    background-repeat: repeat-x;
+    color: #fff;
+}
+
+tr.name_desc td {
+    padding: 2px;
+    font-size: 12px;
+}
+
+.winnerslist {
+    font-size: 12px;
+}
+
+#formlogin .row {
+    margin-bottom: 10px;
+}
+
+.mainlogo {
+    float: none;
+    text-align: center;
+}
+
+.mainlogo img {
+    margin: 0 auto;
+}
+
+#main_container .line_1 {
+    position: relative;
+    z-index: 20;
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 1);
+    color: #e8ad27;
+    font-size: 62px;
+    line-height: 72px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+#main_container .line_2 {
+    position: relative;
+    z-index: 20;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 500;
+}
+
+#main_container .line_2 .sub1,
+#main_container .line_2 .sub2 {
+    color: #fff;
+    background-color: #f1b821;
+    font-size: 32px;
+    padding: 0px 5px;
+    border-radius: 15px;
+}
+
+#main_container .line_2 .sub2 {
+    margin: 0 4px;
+    border-radius: 10px;
+}
+
+#main_container .line_3 {
+    color: #fff;
+    background-color: #f1b821;
+    font-size: 22px;
+    padding: 0px 5px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-top: 25px;
+}
+
+.next-girl {
+/*    background-image: url('');*/
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    padding-bottom: 100px;
+}
+
+.next-girl .text {
+    color: #f1b821;
+    font-weight: bold;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 1);
+    font-size: 35px;
+    line-height: 34px;
+}
+
+.infooter {
+    font-size: 10px;
+    line-height: 12px;
+    padding-top: 30px;
+    color: #000;
+    text-align: center;
+    display: none;
+}
+
+.navbar-fixed-bottom .container-fluid {
+    padding: 0px;
+}
+
+.table-striped > tbody > tr:nth-of-type(2n + 1) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.h1,
+.h2,
+.h3,
+h1,
+h2,
+h3 {
+    text-shadow: 0px 2px 2px rgba(150, 150, 150, 1);
+}
+
+.btn-info {
+    background-image: linear-gradient(to bottom, #d9b51e 0px, #ffff01 100%);
+    border-color: #000;
+    color: #000;
+}
+
+.btn-info:focus,
+.btn-info:hover {
+    background-color: #ffff01;
+    color: #000;
+    border-color: #000;
+}
+
+#debugger {
+    background-color: #FFFFFF;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 25px 5px #999999;
+    color: #111111;
+    display: none;
+    padding: 25px;
+}
+
+.button.bClose {
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: none;
+    font: 600 131%;
+    padding: 0 6px 2px;
+    position: absolute;
+    right: -7px;
+    top: -7px;
+}
+
+.button {
+    background-color: #d52b1e;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.modal-body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 80%;
+}
+
+#formlogin {
+    width: 175px;
+    margin: 0 auto;
+}
+
+#msisdn {
+    width: 100%;
+}
+
+#password {
+    max-width: 238px;
+}
+
+#login {
+    width: 100%;
+}
+
+#message {
+    min-height: 60px;
+}
+
+#vercode {
+    width: 100%;
+}
+
+.navbar-default .navbar-nav > .participe.open > a,
+.navbar-default .navbar-nav > .participe.open > a:hover,
+.navbar-default .navbar-nav > .participe.open > a:focus {
+    background-color: #5c1d18!important;
+    color: #fff!important;
+}
+
+.clearfix {
+    line-height: 1px;
+}
+
+.navbar-brand img {
+    max-width: 150px;
+    height: auto;
+}
+
+.allaround {
+    padding-top: 80px;
+}
+
+.embed-responsive-16by9 {
+    display: none;
+}
+
+.img-banner {
+    margin-top: 10px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.img-banner img {
+    margin: 0 auto;
+}
+body.main {}
+.bgaround {
+    background-color: #013e74;
+    width: 100%;
+    background-position: left center;
+    background-repeat: repeat-y;
+    margin: 0px 0 0px 0;
+    border-bottom: 1px solid #0c0c0e;
+    border-top: 1px solid #0c0c0e;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.75);
+}
+.main .bgaround {
+    background-image: url('http://locvang.mobifone.vn/images/VME-Website-Homepage_v3.jpg');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center 55px;
+}
+
+.allaround {
+    height: 480px;
+}
+
+
+
+@media (min-width: 768px) {
+    body {
+        background-color: #fff;
+    }
+
+    .main .bgaround {
+        background-position: center 120px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .next-girl {
+        padding-bottom: 65px;
+    }
+    ul.navbar-nav {
+        margin-top: 5px;
+        background-color: #fff;
+        border-top: 1px solid #dadada;
+        border-right: 1px solid #dadada;
+        border-left: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+    .navbar-brand img {
+        max-width: 200px;
+        height: auto;
+    }
+    .scrollable {
+        height: 245px;
+        padding-right: 20px;
+    }
+    .navbar-nav > li > a {
+        padding: 10px 3px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .allaround {
+        padding-top: 131;
+        margin: 0 auto;
+        height: 450px;
+    }
+    .main .allaround {
+        background-image: none;
+    }
+    #alertas_container {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+    .hr {
+/*        background-image: url('');*/
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        margin-top: 10px;
+        height: 10px;
+        display: block;
+    }
+    tr.name_desc td {
+        padding: 5px;
+        font-size: 18px;
+    }
+    .winnerslist {
+        font-size: 18px;
+    }
+    #main_container .line_2,
+    #main_container .line_2 .sub1,
+    #main_container .line_2 .sub2 {
+        font-size: 50px;
+    }
+    div.menu {
+        position: relative;
+    }
+    .form-control,
+    .control-label {
+        width: 100%;
+    }
+    .infooter {
+        padding-top: 10px;
+        display: block;
+    }
+    .main .infooter {
+        padding-top: 20px;
+    }
+    .nav > li:last-child {
+        border-right: 5px solid #fff;
+    }
+    .nav > li:first-child {
+        border-left: 5px solid #fff;
+    }
+    .navbar-nav > li > .dropdown-menu:before {
+        background-color: #ed1c24;
+        content: " ";
+        border-radius: 50%;
+        height: 15px;
+        left: 50%;
+        position: absolute;
+        top: -8px;
+        width: 15px;
+    }
+    img.girl {
+        margin-top: 110px;
+        position: relative;
+        z-index: 10;
+    }
+}
+
+@media (min-width: 991px) {
+    .navbar-nav > li > a {
+        font-size: 16px;
+        padding: 10px 5px;
+    }
+    #main_container .line_1 {
+        font-size: 70px;
+        line-height: 80px;
+    }
+    .allaround {
+        height: 550px;
+    }
+    .scrollable {
+        height: 340px;
+    }
+}
+
+@media (min-width: 1201px) {
+    #main_container .line_1 {
+        font-size: 85px;
+        line-height: 95px;
+        text-align: right;
+    }
+    .navbar-nav > li > a {
+        font-size: 17px;
+        padding: 10px 18px;
+    }
+    .main .bgaround {
+        background-size: 100%;
+    }
+    .allaround {
+        height: 725px;
+    }
+    .scrollable {
+        height: 500px;
+    }
+}
+
+@media (min-width: 1441px) {
+    #main_container .line_1 {
+        font-size: 85px;
+        line-height: 95px;
+        text-align: right;
+    }
+    .navbar-nav > li > a {
+        font-size: 17px;
+        padding: 10px 18px;
+    }
+    .main .bgaround {
+        background-size: auto;
+    }
+    .allaround {
+        height: 825px;
+    }
+    .scrollable {
+        height: 600px;
+    }
 }

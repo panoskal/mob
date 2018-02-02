@@ -1,3 +1,4 @@
+<div class="bgaround">
 <?php
 if(ONEPAGE=="true"){
     if($pages==false){
@@ -18,3 +19,5 @@ if(ONEPAGE=="true"){
         include_once 'templates/pages/'.$pages->slug.'.php';
     }
 }
+    ?>
+</div>
