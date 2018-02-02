@@ -1,0 +1,603 @@
+.gotoadmin {
+    position: absolute;
+    z-index: 10000000000;
+    font-size: 31px;
+    left: 10px;
+    top: 5px;
+}
+
+
+@font-face {
+    font-family: 'TIMSansWeb-Bold';
+    src: url('../fonts/TIMSansWeb-Bold.eot');
+    src: url('../fonts/TIMSansWeb-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/TIMSansWeb-Bold.woff2') format('woff2'),
+    url('../fonts/TIMSansWeb-Bold.woff') format('woff'),
+    url('../fonts/TIMSansWeb-Bold.ttf') format('truetype'),
+    url('../fonts/TIMSansWeb-Bold.svg#teuton_normalbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'TIMSansWeb-Regular';
+    src: url('../fonts/TIMSansWeb-Regular.eot');
+    src: url('../fonts/TIMSansWeb-Regular.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/TIMSansWeb-Regular.woff2') format('woff2'),
+    url('../fonts/TIMSansWeb-Regular.woff') format('woff'),
+    url('../fonts/TIMSansWeb-Regular.ttf') format('truetype'),
+    url('../fonts/TIMSansWeb-Regular.svg#teuton_normalRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+html, .container { /*min-width: 992px;*/
+}
+body {
+	font-family: 'TIMSansWeb-Regular';
+	color: #111;
+}
+button {
+	border: none
+}
+h1 {
+	font-size: 2em;
+	font-weight: bold;
+	margin-top: 30px;
+	font-family: TIMSansWeb-Bold;
+	color: #fbfdfe;
+}
+h2 {
+	font-size: 1.3em;
+	font-weight: normal;
+}
+a {
+	color: #00aeef;
+}
+a:hover {
+	color: #004691;
+}
+/* Header */
+.menu-float {
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+}
+.top-menu a {
+	text-decoration: none;
+	position:relative;
+}
+.top-menu-wrapper {
+	background: #003264;
+	padding: 3px 0;
+}
+.top-menu {
+	float: left;
+	margin-left:55%;
+	padding:10px 0;
+}
+.top-menu a {
+	font-variant:small-caps;
+	font-family: TIMSansWeb-Bold;
+	color:#47adf2;
+	line-height:15px;
+	padding:0 10px 0 25px;
+	font-size: 13px;
+}
+.top-menu a:nth-child(2) {
+    border-right: none;
+	border-left: none;
+}
+.top-menu a.white{
+	color:#fff;
+}
+.top-menu a span{
+	position:absolute;
+	left:4px;
+	width:15px;
+	height:15px;
+    background-image:url({cache}/img/tim-icons.png{ver});
+	background-repeat:no-repeat;
+	top:2px;
+}
+.top-menu a span.timlogo{
+    background-image:url({cache}/img/logo-tim.png{ver});
+	background-position: -10px -15px;
+	background-size: 100px auto;
+	height: 30px;
+	width: 80px;
+}
+.top-menu a span.loga{
+	background-position:center top;
+}
+.top-menu a span.mytim{
+	background-position:right top;
+}
+.top-menu .pull{
+	position:absolute;
+	left:10px;
+}
+.logo {
+	display: inline-block;
+	margin-top: 10px;
+}
+.main-menu-wrapper {
+	background: #004691;
+	border-top:2px solid #5793ca;
+	padding: 10px 0;
+	display:none;
+}
+.main-menu {
+	list-style: none;
+	display: inline-block;
+	float: left;
+	margin-bottom: 0
+}
+.main-menu li {
+	display: inline-block;
+	margin-right: 20px;
+	line-height: 70px;
+}
+.main-menu li:last-child {
+	margin-right: 0
+}
+
+/*slicknav */
+.slick-menu{
+
+}
+.slicknav_menu {
+    background:none;
+}
+.slicknav_menu .slicknav_menutxt{
+	display:none;
+}
+.slicknav_btn {
+    margin: 5px 5px 6px;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(255,255,255,.75);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color:transparent;
+}
+/* Home */
+.main {
+	background: #fff;
+	background: none;
+	height:auto;
+}
+.container-main {
+	background: none;
+}
+.concorra h1 {
+	color: #004691;
+}
+.concorra p {
+	color: #49a942;
+	font-size: 1.5em;
+	font-family: TIMSansWeb-Bold;
+}
+/* O Aplicativo */
+.o-aplicativo {
+	background: #002e46;
+    background-image: url({cache}/img/bg-game.jpg{ver});
+	background-position: 25% 100%;
+	background-repeat: no-repeat;
+	padding: 0;
+	color:#fff;
+}
+.o-aplicativo p{
+	font-size: 1.3em;
+}
+.o-aplicativo .line-1{
+	font-size: 1.5em;
+	font-family: TIMSansWeb-Bold;
+	margin-top:50px;
+	color:#00aeef;
+}
+.carousel {
+    background-image: url({cache}/img/bg-phone.png{ver});
+	background-position: 24px center;
+	background-repeat: no-repeat;
+	padding:55px 0;
+    width: 290px;
+	background-size:contain;
+	margin: 0 auto;
+}
+.carousel-control{
+	width:10%;
+}
+.carousel-inner {
+	width: 200px;
+	margin-left: 45px;
+}
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+}
+.glyphicon-chevron-right:before, .glyphicon-chevron-left:before {
+	display: none;
+}
+.o-aplicativo .carousel-control.right, .o-aplicativo .carousel-control.left {
+	background-image: none;
+}
+
+/* como funciona */
+.como-funciona p {
+	font-size: 1.2em;
+}
+.como-funciona p span {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+.como-funciona h1 {
+	color: #004691;
+}
+.como-funciona {
+	height: 100%;
+	background: #fff;
+	background-image:none;
+	padding: 0;
+	color: #111;
+}
+#funciona-bg{
+	margin-top:40px;
+	display:block;
+}
+.como-funciona a {
+	color: #111;
+	text-decoration: underline;
+}
+.como-funciona a:hover {
+	color: #002e46;
+	text-decoration: underline;
+}
+.container-como-funciona {
+	width: 90%;
+}
+/* Prêmios */
+.premios {
+	background: #00aeef;
+	text-align: center;
+	color: #fff;
+	padding: 50px 0;
+}
+.premios header img {
+	display: block;
+	margin: 0 auto;
+}
+.premios h1 {
+	margin-top: 10px;
+	text-align: center;
+}
+.premios p, .premios li {
+	font-size: 1.5em;
+}
+.premios ul {
+	list-style: none;
+	font-weight: bold;
+	padding:0;
+}
+.premios a {
+	font-size: 1.5em;
+	color: #fff;
+	text-decoration: underline;
+}
+.premios a:hover {
+	color: #ffe042;
+	text-decoration: underline;
+}
+.premios ul span {
+	font-size: 55px;
+}
+/* cupons */
+.cupons {
+	background: #fff;
+	background-image:none;
+	padding: 0;
+	color: #111;
+}
+#cupons-bg{
+	margin-top:40px;
+	display:block;
+}
+.cupons h1 {
+	color: #004691;
+}
+.container-cupons {
+	width: 558px;
+}
+.cupons p, .cupons label {
+	font-size: 20px;
+	font-weight: normal;
+}
+.cupons input {
+	margin-right: 10px;
+}
+.tickets-result dl{
+	margin-bottom:10px;
+}
+.btn-blue {
+	background: #004691;
+	color: #fff;
+	font-size: 1.5em;
+}
+.btn-blue:hover {
+	background: #002e46;
+	color: #fff;
+}
+.captcha {
+	margin-left: 10px;
+}
+/* faq */
+.faq {
+	background: #c7c7c7;
+	padding-bottom: 50px;
+}
+.faq h1 {
+	text-align: center;
+	color: #002e46;
+}
+#faq-scroll, #ganhadores-scroll, #ct-scroll {
+	background: #fff;
+	color: #111111;
+	padding: 20px;
+	font-size: 1.3em;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radois: 5px;
+}
+.faq dt {
+	color: #00aeef;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+.faq dd {
+	margin-bottom: 15px;
+}
+/* Ganhadores */
+.ganhadores {
+	background: #44c8f5;
+	padding-bottom: 50px;
+}
+.ganhadores h1 {
+	text-align: center;
+}
+/* ct */
+.ct {
+	background: #002e46;
+	padding-bottom: 50px;
+}
+.ct h1 {
+	text-align: center;
+}
+.slicknav_menu {
+	display: none;
+}
+/* user Status */
+.userstatus {
+	background: #117ec1
+}
+.userstatus h2 {
+	font-size: 2.6em;
+}
+.userstatus h3, .userstatus p {
+	margin: 0;
+}
+.userstatus h3 span, .userstatus p span {
+	font-size: 1.3em;
+	color: #f5d300;
+}
+/*
+Generic Styling, for Desktops/Laptops
+*/
+caption {
+	color: #111111;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+/* Zebra striping */
+tr {
+	background: #eee;
+}
+th {
+	background: #002e46;
+	color: white;
+	font-weight: bold;
+}
+td, th {
+	padding: 6px;
+	border: 1px solid #ccc;
+	text-align: left;
+}
+.loterias tr td {
+	text-align: center;
+	vertical-align: top;/* width: 59; */
+}
+.loterias {
+	border-spacing: 0px;
+	padding: 0px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	border-width: 1px;
+}
+.federal {
+	width: 278px;
+}
+.premiacao {
+	border-spacing: 0px;
+	padding: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+.premiacao tr td {
+	text-align: center;
+	vertical-align: top;
+}
+.pinakara tr td {
+	text-align: left;
+	vertical-align: top;
+	width: 100%;
+}
+.pinakara {
+	border-spacing: 0px;
+	padding: 0px;
+	border-width: 0px;
+}
+
+/*  Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px and also iPads specifically. */
+@media only screen and (max-width: 760px), (min-device-width: 240px) and (max-device-width: 1024px) {
+/* Force table to not be like tables anymore */
+table, thead, tbody, th, td, tr {
+	display: block;
+}
+/* Hide table headers (but not display: none;, for accessibility) */
+thead tr {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+tr {
+	border: 1px solid #ccc;
+}
+td {
+	/* Behave  like a "row" */
+	border: none;
+	border-bottom: 1px solid #eee;
+	position: relative;
+	padding-left: 50%;
+}
+td:before {
+	/* Now like a table header */
+	position: absolute;
+	/* Top/left values mimic padding */
+	top: 6px;
+	left: 6px;
+	width: 45%;
+	padding-right: 10px;
+	white-space: nowrap;
+}
+}
+@media screen and (max-width: 992px) {
+ #menu {
+	display: none;
+}
+ .slicknav_menu {
+	display: block;
+}
+}
+@media screen and (min-width: 360px) {
+	.top-menu {
+		margin-left:60%;
+	}
+}
+@media screen and (min-width: 992px) {
+	 .top-menu a:nth-child(2) {
+		border-right: 1px solid #08559e;
+		border-left: 1px solid #08559e;
+	}
+	 .top-menu a span.timlogo{
+         background-image:url({cache}/img/tim-icons.png{ver});
+		background-position:left top;
+		background-size:auto;
+		width: 15px;
+		height: 15px;
+	}
+	.top-menu .pull{
+		position:relative;
+		left:auto;
+	}
+	.top-menu {
+		float: right;
+		padding:10px 0;
+		margin-left:auto;
+	}
+	 h1 {
+		font-size: 3em;
+		margin-top: 77px;
+	 }
+	 .main {
+		height:470px;
+         background: url({cache}/img/bg-main.jpg{ver}) 100% 0px no-repeat;
+	}
+	 .cupons {
+         background-image: url({cache}/img/bg-cupons.jpg{ver});
+		background-position: center right;
+		background-repeat: no-repeat;
+		padding: 40px 0;
+		min-height: 580px;
+	}
+	#cupons-bg{
+		display:none;
+	}
+	#bottom-bg{
+		display:none;
+	}
+	.como-funciona {
+        background-image: url({cache}/img/bg-functiona.jpg{ver});
+		background-position: center right;
+		background-repeat: no-repeat;
+		padding: 100px 0;
+	}
+	#funciona-bg{
+		display:none;
+	}
+	.como-funciona p {
+		font-size: 1.3em;
+	}
+	.como-funciona p span {
+		font-size: 2em;
+	}
+	.carousel {
+		background-position: 44px center;
+		background-size:auto;
+		padding:55px 0;
+		width: 375px;
+	}
+	.carousel-inner {
+		width: 240px;
+		margin-left: 70px;
+	}
+	.o-aplicativo {
+	    background-position: left center;
+		padding: 50px 0;
+	}
+	.main-menu-wrapper {
+		background: #004691;
+		border-top:2px solid #5793ca;
+		padding: 10px 0;
+		display:block;
+	}
+ }
+
+
+
+
+#ct-scroll,#faq-scroll,#ganhadores-scroll{
+    max-height:400px;
+    overflow:auto;
+}
+.lang {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    margin-left: 16px;
+}.langs {
+    display: inline-block;
+    height: 70px;
+    width: 42px;
+}.langs img {
+    width: 42px;
+    margin-top: 24px;
+    max-height: 200px;
+}
+
+
+

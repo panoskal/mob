@@ -1,0 +1,492 @@
+html,
+body,
+.admin-panel-page,
+.first-row {
+
+    height: 100%;
+}
+
+.modal-open {
+    overflow: auto;
+    padding-right: 0 !important;
+}
+
+.main-page-content {
+    padding-bottom: 6em;
+}
+
+.align-center-text {
+    text-align: center;
+}
+
+span.error-msg {
+    color: red;
+}
+
+span.success-msg {
+    color: green;
+}
+
+.extra-info {
+    font-size: 9px;
+}
+
+/*--------------------------------------------------------
+-------------------------LOGIN PAGE--------------------------
+---------------------------------------------------------*/
+
+.login-page {
+    background: #eefbfc;
+}
+
+.loginform {
+    color: #fff;
+    background: #045C64;
+    margin: auto;
+    padding: 15px;
+    width: 450px;
+    border: 1px solid #045C64;
+    border-radius: 4px;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.loginform input {
+/*    border: 1px solid #045C64;*/
+    font-family: 'FontAwesome', 'LatoWeb';
+    color: #000;
+}
+
+button#login {
+    background: #fff;
+}
+
+button#login:hover {
+    background: #045C64;
+}
+
+/*--------------------------------------------------------
+-------------------------TOP BAR--------------------------
+---------------------------------------------------------*/
+
+/*
+#loginpage label {
+    color: #045C64;
+}
+*/
+
+.top-bar-info {
+    background: #69B9C0;
+    padding: 8px 15px;
+}
+
+.logout-user {
+    text-align: right;
+    margin-right: 15px;
+    width: 100%;
+    padding: 6px 0;
+}
+
+.logout {
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.logout:hover {
+    color: #045C64;
+}
+
+/*--------------------------------------------------------
+---------------------------MENU---------------------------
+---------------------------------------------------------*/
+
+.welcome-user {
+    text-align: left;
+    padding: 6px 15px;
+    width: 100%;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.welcome-user .fa.fa-user-circle-o {
+    font-size: 40px;
+}
+
+.welcome-user a {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+.menu-items {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.main-menu-sidebar {
+    background: #045C64;
+    color: rgba(255, 255, 255, 0.6);
+    height: 100%;
+    padding: 0;
+    position: fixed;
+}
+
+.special-icon,
+.arrow-right,
+.item-name {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.d-field-page {
+    display: block;
+    padding: 6px 15px;
+}
+
+.special-icon {
+    width: 30px;
+}
+
+.menu-items li {
+    font-size: 20px;
+}
+
+.arrow-right {
+    float: right;
+    font-size: 15px;
+    margin-top: 7px;
+}
+
+.name-user {
+    display: inline;
+    float: right;
+    margin-top: 13px;
+    margin-right: 11px;
+}
+
+.menu-items li:hover {
+    background: #69B9C0;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.menu-items li:hover .special-icon {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.menu-items li:hover .item-name {
+    float: right;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.menu-items li:hover .arrow-right {
+    display: none;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+
+/*--------------------------------------------------------
+----------------------COMMON CONTENT----------------------
+---------------------------------------------------------*/
+
+.header {
+    margin: 10px auto 10px;
+    background: #0E747E;
+    padding: 6px 15px;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.small-info {
+    text-align: right;
+    margin: 100px auto 0;
+    font-size: 9px;
+}
+
+.button-faux {
+    border: #69B9C0 2px solid;
+    padding: 6px;
+    color: #69B9C0;
+    border-radius: 5px;
+    font-weight: normal;
+}
+
+.button-faux:hover {
+    text-decoration: none;
+    background: rgba(4, 92, 100, 0.1);
+}
+
+.buttons-line {
+    margin-top: 30px;
+}
+
+.small-pad {
+    width: 18px;
+}
+
+.general-dropdown {
+    width: 185px;
+}
+
+.checkbox-level {
+    margin-top: 35px;
+}
+
+.form-line {
+    margin-bottom: 15px;
+}
+
+
+
+/*--------------------------------------------------------
+---------------------------PAGES--------------------------
+---------------------------------------------------------*/
+
+.page-lang-value,
+.num-value,
+.page-title-value,
+.page-slug-value,
+.page-enabled-value,
+.page-lang-value {
+    float: left;
+}
+
+.enclosed-table {
+    margin: 35px auto 0;
+}
+
+.page-element-row {
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.first-table-row.page-element-row {
+    font-weight: 600;
+    color: #045C64;
+    border-bottom: 1px solid #045C64;
+    padding: 5px 0;
+    font-size: 17px;
+}
+
+.page-element-row.disabled-page,
+.page-element-row.line-colored.disabled-page {
+    color: #A61065;
+    font-weight: 800;
+}
+
+.page-element-row.line-colored,.slag-default.line-colored {
+    background: rgba(206, 78, 150, 0.1);
+}
+.requred-fields {
+    font-weight: normal;
+    margin-left: 11px;
+    color: rgba(206, 78, 150, 1);
+    font-size: 10px;
+    font-style: italic;
+}
+.link-center{
+   margin: 0 auto;
+    display: block;
+    width: 15px;
+}
+.link-center .fa-pencil-square-o,.link-center.fa-pencil-square-o{
+    color:lightseagreen;
+    cursor: pointer;
+}
+.link-center .fa-trash,.link-center.fa-trash{
+    color:mediumvioletred;
+    cursor: pointer;
+}
+
+/*--------------------------------------------------------
+---------------------------MENU---------------------------
+---------------------------------------------------------*/
+
+.page-action-value {
+    text-align: center;
+}
+#sortable { list-style-type: none; margin: 0; padding: 0;  }
+#menuErrMsgs {
+    background: rgba(0,0,0,0.4);
+    margin: 10px auto;
+    line-height: 32px;
+    text-align: center;
+    color: #9BBEC1;
+}
+.menu-resort{
+    display: none;
+}.menu-edit {
+    float: left;
+    margin-right: 5px;
+}
+/*--------------------------------------------------------
+---------------------------CONFIGURATION------------------
+---------------------------------------------------------*/
+.add-config, .add-winner {
+    margin: 35px 0;
+}
+.config-edit .fa-pencil-square-o, .winner-edit .fa-pencil-square-o {
+    color: lightseagreen;
+    cursor: pointer;
+}
+.config-delete .fa-trash, .winner-delete .fa-trash {
+    color: mediumvioletred;
+    cursor: pointer;
+}
+#insertConfigModal label,#insertmenuModal label, #insertWinnerModal label, #loginpage label {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-content {
+    padding: 15px;
+    background: rgba(4, 92, 100, 1);
+}
+
+#insertConfigModal .fa-times, #insertWinnerModal .fa-times, #installDbModal .fa-times {
+    font-size: 1.6em;
+    color: #fff;
+}
+
+#insertConfigBtn.button-faux, #insertWinnerBtn.button-faux {
+    background: #fff;
+    font-family: LatoWebBlack;
+}
+
+.table-striped>tbody>tr:nth-child(odd) {
+    background-color: rgba(206, 78, 150, 0.1);
+    color: #A61065;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+    border-top: none;
+    vertical-align: middle;
+}
+
+.config-entry-row {
+    font-size: 14px;
+}
+
+button.add-config-btn, button.add-winner-btn {
+    background: #fff;
+}
+
+.config-edit .fa:hover, .config-delete .fa:hover, .winner-edit .fa:hover, .winner-delete .fa:hover {
+    cursor: pointer;
+}
+
+#insertConfigModal span.error-msg, #winnerErrMsg span.error-msg {
+    color: yellow;
+}
+/*--------------------------------------------------------
+----------------------------HOME--------------------------
+---------------------------------------------------------*/
+.general-info-line {
+    margin-top: 15px;
+}
+.info-title {
+    font-weight: 600;
+    display: inline-block;
+    text-align: left;
+}
+.lang-default {
+    color: rgba(206, 78, 150, 1);
+    margin: 0 4px;
+}
+.bottom-strike{
+    border-bottom: 1px solid rgba(206, 78, 150, 1);
+}
+.slag-default {
+    display: block;
+    text-align: center;
+    padding: 6px;
+}
+.info-subtitle {
+    background: #FAEDF4;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    margin-top: 5px;
+    border-bottom: 1px solid #CE4E96;
+}
+.winners-data{
+
+    border-bottom: 1px solid #CE4E96;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+a.button-faux {
+    display: inline;
+}
+a.button-faux .fa{
+   margin-left: 10px;
+}
+
+.supersmall {
+
+    font-size: 10px;
+    color: #CE4E96;
+
+}
+/*--------------------------------------------------------
+---------------------------WINNERS------------------------
+---------------------------------------------------------*/
+#insertWinnerModal .modal-header .close {
+    margin-top: -24px;
+}
+
+#insertWinnerBtn {
+    display: block;
+}
+/*--------------------------------------------------------
+---------------------------INSTALL------------------------
+---------------------------------------------------------*/
+#installDbModal {
+    text-align: center;
+}
+
+.installDbTitle {
+    color: #fff;
+}
+
+.veil {
+    position: fixed;
+    z-index: 999;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.cog-loader {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -75px;
+    margin-left: -75px;
+}
+
+#installDBMsgs.small-info {
+    text-align: left;
+    margin: 25px auto 0;
+    font-size: 11px;
+}
+
+/*--------------------------------------------------------
+---------------------------CHECK URL------------------------
+---------------------------------------------------------*/
+
+.user-auth-input {
+    display: none;
+}
