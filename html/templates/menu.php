@@ -57,23 +57,22 @@
                 <div class="collapse navbar-collapse" id="topmenu">
                     <ul class="nav navbar-nav">
                     <?php
-                        for($i=0;$i<count($menu);$i++){
-                            $class="";
-                            if(ONEPAGE=="false"){
-                                if($menu[$i]['slug']==$mPageSlug){
-                                    $class="active";
-                                }else{
-                                  $class="";
-                                }
-                            }
-                            echo '<li ><a href="'.$href.$menu[$i]['slug'].'"  '.$scrollancore.' >'.$menu[$i]['title'].'</a></li>';
-                        }
-                        $class="";
-                        if(ONEPAGE=="false"){
-                            $class="";
-                        }
+//                        for($i=0;$i<count($menu);$i++){
+//                            $class="";
+//                            if(ONEPAGE=="false"){
+//                                if($menu[$i]['slug']==$mPageSlug){
+//                                    $class="active";
+//                                }else{
+//                                  $class="";
+//                                }
+//                            }
+//                            echo '<li ><a href="'.$href.$menu[$i]['slug'].'"  '.$scrollancore.' >'.$menu[$i]['title'].'</a></li>';
+//                        }
+//                        $class="";
+//                        if(ONEPAGE=="false"){
+//                            $class="";
+//                        }
                         ?>
-<!--
                         <li class="active"><a href="main" title="Trang chủ">Trang chủ</a></li>
                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Giải thưởng <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -106,7 +105,6 @@
                             </ul>
                         </li>
                         <li><a href="login" title="Tra cứu điểm số">Tra cứu điểm số</a></li>
--->
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
