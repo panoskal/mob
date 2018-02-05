@@ -74,7 +74,15 @@ class Menu {
     }
     public static function getmenu($lang) {
         global $database;
-        $query = "select cms_menu.slug, cms_menu.`order`, cms_pages.title from cms_menu JOIN cms_pages on cms_pages.slug=cms_menu.slug WHERE lang=:lang and enabled=:enabled ORDER BY `order`";
+        $query = "select cms_menu.slug, cms_menu.`order`, cms_pages.title from cms_menu JOIN cms_pages on cms_pages.slug=cms_menu.slug
+                WHERE lang=:lang and enabled=:enabled ORDER BY `order`";
+        $result_array = $database->getRows($query, array(':lang' => $lang,':enabled' => "1"));
+		return !empty($result_array) ? ($result_array) : false;
+    }
+    public static function getmenuUltimateForm($lang) {
+        global $database;
+        $query = "SELECT cms_menu.slug,`order`,has_parent,is_not_link, title FROM cms_menu JOIN cms_pages on cms_pages.slug=cms_menu.slug
+                WHERE lang=:lang and enabled=:enabled  ORDER BY has_parent DESC,`order`";
         $result_array = $database->getRows($query, array(':lang' => $lang,':enabled' => "1"));
 		return !empty($result_array) ? ($result_array) : false;
     }
