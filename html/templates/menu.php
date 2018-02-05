@@ -58,10 +58,7 @@
                     <ul class="nav navbar-nav">
                     <?php
                         if (!empty($menu) && is_array($menu)) {
-
-
-                                    $children_array=array();
-
+                            $children_array=array();
                             foreach($menu as $menuval) {
                                 if(!empty($menuval->has_parent)){
                                     $children_array[$menuval->has_parent][]=$menuval;
@@ -72,36 +69,32 @@
                                         $class="";
                                     }
                                     if($menuval->is_not_link==1){
-                                        ?>
-
+?>
                                         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $menuval->slug;?><span class="caret"></span></a>
-
-                                        <?php
+<?php
                                     }else{
-                                         echo '<li ><a href="'.$href.$menuval->slug.'"  '.$scrollancore.' >'.$menuval->slug.'</a>';
+                                         echo '<li ><a href="'.$href.$menuval->slug.'"  '.$scrollancore.' >'.$menuval->title.'</a>';
                                     }
                                     if(isset($children_array[$menuval->slug])){
-                                        ?>
+?>
+                                            <ul class="dropdown-menu">
+<?php
+                                        foreach($children_array[$menuval->slug] as $r=>$submenu){
+?>
+                                               <li><a href="<?php echo $href.$submenu->slug; ?>"><?php echo $submenu->title; ?></a></li>
 
-                                        <ul class="dropdown-menu">
-                        <?php
-                         foreach($children_array[$menuval->slug] as $r=>$submenu){
-                        ?>
-                               <li><a href="<?php echo $href.$submenu->slug; ?>"><?php echo $submenu->slug; ?></a></li>
-
-                        <?php
+<?php
+                                        }
+?>
+                                            </ul>
+<?php
                                     }
-//                    }
-                             ?>
-                        </ul>
-                        <?php
-                                }
-                                            ?>
-                        </li>
-                        <?php
+?>
+                                        </li>
+<?php
                             }
                         }
-                        }
+                    }
 //                        for($i=0;$i<count($menu);$i++){
 //                            $class="";
 //                            if(ONEPAGE=="false"){
