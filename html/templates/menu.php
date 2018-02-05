@@ -60,7 +60,6 @@
                         if (!empty($menu) && is_array($menu)) {
                             $children_array=array();
                             foreach($menu as $sort=>$menuval) {
-
                                 if(!empty($menuval->has_parent)){
                                     $children_array[$menuval->has_parent][]=$menuval;
                                 }else{
@@ -76,13 +75,12 @@
                                     }else{
                                          echo '<li ><a href="'.$href.$menuval->slug.'"  '.$scrollancore.' >'.$menuval->title.'</a>';
                                     }
-                                    var_dump($menuval->title);
-                                    if(isset($children_array[$menuval->title])){
-                                        var_dump($children_array[$menuval->title]);
+                                    if(isset($children_array[$menuval->slug])){
+//                                        var_dump($children_array[$menuval->title]);
 ?>
                                             <ul class="dropdown-menu">
 <?php
-                                        foreach($children_array[$menuval->title] as $r=>$submenu){
+                                        foreach($children_array[$menuval->slug] as $r=>$submenu){
 ?>
                                                <li><a href="<?php echo $href.$submenu->slug; ?>"><?php echo $submenu->title; ?></a></li>
 

@@ -81,8 +81,10 @@ class Menu {
     }
     public static function getmenuUltimateForm() {
         global $database;
-        $query = "SELECT cms_menu.slug,`order`,has_parent,is_not_link, title,lang,enabled FROM cms_menu JOIN cms_pages on cms_pages.slug=cms_menu.slug
-                ORDER BY has_parent DESC,`order`";
+        $query = "SELECT cms_menu.slug,`order`,has_parent,is_not_link, title
+FROM cms_menu LEFT OUTER JOIN cms_pages
+on cms_pages.slug=cms_menu.slug
+ORDER BY has_parent DESC,`order`";
         $result_array = $database->getObj($query, 'Menu');
         return !empty($result_array) ? $result_array : false;
     }
