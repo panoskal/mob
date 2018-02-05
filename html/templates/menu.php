@@ -57,21 +57,66 @@
                 <div class="collapse navbar-collapse" id="topmenu">
                     <ul class="nav navbar-nav">
                     <?php
-                        for($i=0;$i<count($menu);$i++){
-                            $class="";
-                            if(ONEPAGE=="false"){
-                                if($menu[$i]['slug']==$mPageSlug){
-                                    $class="active";
+                        if (!empty($menu) && is_array($menu)) {
+
+
+                                    $children_array=array();
+
+                            foreach($menu as $menuval) {
+                                if(!empty($menuval->has_parent)){
+                                    $children_array[$menuval->has_parent][]=$menuval;
                                 }else{
-                                  $class="";
+                                    if ($menuval->slug == $mPageSlug) {
+                                        $class="active";
+                                    }else{
+                                        $class="";
+                                    }
+                                    if($menuval->is_not_link==1){
+                                        ?>
+
+                                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $menuval->slug;?><span class="caret"></span></a>
+
+                                        <?php
+                                    }else{
+                                         echo '<li ><a href="'.$href.$menuval->slug.'"  '.$scrollancore.' >'.$menuval->slug.'</a>';
+                                    }
+                                    if(isset($children_array[$menuval->slug])){
+                                        ?>
+
+                                        <ul class="dropdown-menu">
+                        <?php
+                         foreach($children_array[$menuval->slug] as $r=>$submenu){
+                        ?>
+                               <li><a href="<?php echo $href.$submenu->slug; ?>"><?php echo $submenu->slug; ?></a></li>
+
+                        <?php
+                                    }
+//                    }
+                             ?>
+                        </ul>
+                        <?php
                                 }
+                                            ?>
+                        </li>
+                        <?php
                             }
-                            echo '<li ><a href="'.$href.$menu[$i]['slug'].'"  '.$scrollancore.' >'.$menu[$i]['title'].'</a></li>';
                         }
-                        $class="";
-                        if(ONEPAGE=="false"){
-                            $class="";
                         }
+//                        for($i=0;$i<count($menu);$i++){
+//                            $class="";
+//                            if(ONEPAGE=="false"){
+//                                if($menu[$i]['slug']==$mPageSlug){
+//                                    $class="active";
+//                                }else{
+//                                  $class="";
+//                                }
+//                            }
+//                            echo '<li ><a href="'.$href.$menu[$i]['slug'].'"  '.$scrollancore.' >'.$menu[$i]['title'].'</a></li>';
+//                        }
+//                        $class="";
+//                        if(ONEPAGE=="false"){
+//                            $class="";
+//                        }
                         ?>
 <!--
                         <li class="active"><a href="main" title="Trang chủ">Trang chủ</a></li>

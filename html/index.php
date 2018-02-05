@@ -32,7 +32,11 @@ if(isset($_GET["lang"])&&!empty($_GET["lang"])){//lang is set
 }
 $_SESSION['lang'] = $lang;
 include_once 'templates/lang/'.$lang.'.php';
-$menu=Menu::getmenu($lang);
+$menu=Menu::getAllMenuItems();
+//echo '<pre>';
+//print_r($menu);
+//echo '</pre>';
+//die();
 $meta_description="";
 $meta_keywords="";
 
