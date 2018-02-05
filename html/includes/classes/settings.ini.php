@@ -2,6 +2,6 @@
 [SQL]
 host = localhost
 user = root
-password =
+password = mysql
 dbname = mobifone_locvang
 charset = utf8
