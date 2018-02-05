@@ -53,12 +53,21 @@ class Menu {
         ));
         return $result;
     }
+    public static function is_not_link_Menu($slug, $link_type) {
+        global $database;
+        $query = "UPDATE cms_menu SET `is_not_link`=:is_not_link WHERE slug=:slug";
+        $result = $database->updateRow($query, array(
+            ':is_not_link'    => $link_type,
+            ':slug'           => $slug,
+        ));
+        return $result;
+    }
         public static function updateOrderSubMenu($slug, $order, $parent) {
         global $database;
         $query = "UPDATE cms_menu SET `order`=:order , has_parent=:has_parent WHERE slug=:slug";
         $result = $database->updateRow($query, array(
             ':order'          => $order,
-            ':has_parent'          => $parent,
+            ':has_parent'     => $parent,
             ':slug'           => $slug,
         ));
         return $result;

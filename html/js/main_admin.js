@@ -395,6 +395,42 @@ jQuery(function ($) {
         }
     });
 
+
+    $(document).on('click', '.linkset', function (e) {
+
+            var action = $(this).data('action');
+            var element = $(this).data(action);
+            var values = {
+                'action': "linkset",
+                'doAction': action,
+                'elementSlug': element
+            };
+            $.ajax({
+                type: "POST",
+                data: values,
+                url: "admin_formhandlers.php",
+                success: function (msg) {
+                    //                    var obj = JSON.parse(msg);
+                    location.reload();
+                },
+                error: function (request, status, error) {
+                    $('#menuErrMsgsout').empty();
+                    var jsonObj = request.responseText;
+                    var obj = JSON.parse(jsonObj);
+                    var errString = "";
+                    for (var key in obj) {
+                        if (obj.hasOwnProperty(key)) {
+                            errString += obj[key] + '<br>';
+                        }
+                    }
+                    $('#menuErrMsgsout').append('<span class="requred-fields"><b>ERROR: </b>' + errString + '</span>');
+                    $("html, body").animate({
+                        scrollTop: "0"
+                    }, 500);
+                }
+            });
+    });
+
     $(document).on('click', '#insertmenuBtn', function (e) {
         $('#menuErrMsgs').empty();
         e.preventDefault();

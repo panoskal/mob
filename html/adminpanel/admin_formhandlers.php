@@ -418,6 +418,53 @@ if (isset($_POST['action']) && $_POST['action']==='deleteMenuItem') {
 
 
 
+if (isset($_POST['action']) && $_POST['action']==='linkset') {
+    $linkMenuItemMsg = array();
+    if ($_POST['doAction'] != ''&&$_POST['elementSlug'] != '') {
+        $elemSlug = Sanitize::processString($_POST['elementSlug']);
+        $action=$_POST['doAction'];
+        $database->beginTransaction();
+
+        if($action=="link"){
+            Menu::is_not_link_Menu($elemSlug, 0) ;
+        }else if($action=="unlink"){
+            Menu::is_not_link_Menu($elemSlug, 1) ;
+        }else {
+            $database->cancelTransaction();
+            $linkMenuItemMsg['fail'] = "Element to be ".$action.", not found";
+            header('HTTP/1.1 400 Bad request');
+            header('Content-Type: application/json; charset=UTF-8');
+            die(json_encode($linkMenuItemMsg, JSON_UNESCAPED_UNICODE));
+        }
+        $result=true;
+        if($database->ReturnError()){
+            $database->cancelTransaction();
+            $result=false;
+        }else{
+            $database->endTransaction();
+        }
+
+        $_POST = "";
+        if (!empty($result)) {
+            $linkMenuItemMsg['success'] = "You have succesfully ".$action." the menu item.";
+            echo json_encode($linkMenuItemMsg, JSON_UNESCAPED_UNICODE);
+        } else {
+            $linkMenuItemMsg['fail'] = "Element to be ".$action.", not found";
+            header('HTTP/1.1 400 Bad request');
+            header('Content-Type: application/json; charset=UTF-8');
+            die(json_encode($linkMenuItemMsg, JSON_UNESCAPED_UNICODE));
+        }
+    } else {
+        $_POST = "";
+        $linkMenuItemMsg['fail'] = "Could not find the configuration entry that you requested";
+        header('HTTP/1.1 400 Bad request');
+        header('Content-Type: application/json; charset=UTF-8');
+        die(json_encode($linkMenuItemMsg, JSON_UNESCAPED_UNICODE));
+    }
+
+}
+
+
 
 if (isset($_POST['action']) && $_POST['action']==='menuItemNEW') {
 

@@ -1,5 +1,4 @@
 
-  Menu page pano pano menei na geinetai to menu item link h unlink(menu page pano pano)
 
   <?php
    //SHOW ALL THE PAGES
@@ -169,7 +168,7 @@
             <div class="num-value col-sm-4"><?php echo $item->order;?></div>
             <div class="slugvalue num-value col-sm-6"><?php echo $item->slug;?></div>
             <div class="page-lang-value col-sm-1"><i class="fa fa-trash deleteMenuItem link-center" aria-hidden="true" data-deleteslug="<?php echo $item->slug; ?>"></i></div>
-            <div class="page-lang-value col-sm-1"><i class="fa <?php echo ($item->is_not_link)?"fa-link":"fa-unlink"; ?> linkset link-center" aria-hidden="true" data-<?php echo ($item->is_not_link)?"linkset":"unlink"; ?>t="<?php echo $item->slug; ?>"></i></div>
+            <div class="page-lang-value col-sm-1"><i class="fa <?php echo ($item->is_not_link)?"fa-link":"fa-unlink"; ?> linkset link-center" aria-hidden="true" data-action="<?php echo ($item->is_not_link)?"link":"unlink"; ?>" data-<?php echo ($item->is_not_link)?"link":"unlink"; ?>="<?php echo $item->slug; ?>"></i></div>
 
 
         </div>
@@ -187,8 +186,7 @@
                                     <div class="num-value col-sm-4"><?php echo $submenu->order;?></div>
                                     <div class="subslugvalue num-value col-sm-6"><?php echo $submenu->slug;?></div>
                                     <div class="page-lang-value col-sm-1"><i class="fa fa-trash deleteMenuItem link-center" aria-hidden="true" data-deleteslug="<?php echo $item->slug; ?>"></i></div>
-                                     <div class="page-lang-value col-sm-1"><i class="fa <?php echo ($submenu->is_not_link)?"fa-link":"fa-unlink"; ?> linkset link-center" aria-hidden="true" data-<?php echo ($submenu->is_not_link)?"linkset":"unlink"; ?>t="<?php echo $submenu->slug; ?>"></i></div>
-
+                                    <div class="page-lang-value col-sm-1"><i class="fa <?php echo ($submenu->is_not_link)?"fa-link":"fa-unlink"; ?> linkset link-center" aria-hidden="true" data-action="<?php echo ($submenu->is_not_link)?"link":"unlink"; ?>" data-<?php echo ($submenu->is_not_link)?"link":"unlink"; ?>="<?php echo $submenu->slug; ?>"></i></div>
                                 </div>
                             </li>
                             <?php
