@@ -79,12 +79,12 @@ class Menu {
         $result_array = $database->getRows($query, array(':lang' => $lang,':enabled' => "1"));
 		return !empty($result_array) ? ($result_array) : false;
     }
-    public static function getmenuUltimateForm($lang) {
+    public static function getmenuUltimateForm() {
         global $database;
-        $query = "SELECT cms_menu.slug,`order`,has_parent,is_not_link, title FROM cms_menu JOIN cms_pages on cms_pages.slug=cms_menu.slug
-                WHERE lang=:lang and enabled=:enabled  ORDER BY has_parent DESC,`order`";
-        $result_array = $database->getRows($query, array(':lang' => $lang,':enabled' => "1"));
-		return !empty($result_array) ? ($result_array) : false;
+        $query = "SELECT cms_menu.slug,`order`,has_parent,is_not_link, title,lang,enabled FROM cms_menu JOIN cms_pages on cms_pages.slug=cms_menu.slug
+                ORDER BY has_parent DESC,`order`";
+        $result_array = $database->getObj($query, 'Menu');
+        return !empty($result_array) ? $result_array : false;
     }
 
 

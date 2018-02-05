@@ -59,7 +59,8 @@
                     <?php
                         if (!empty($menu) && is_array($menu)) {
                             $children_array=array();
-                            foreach($menu as $menuval) {
+                            foreach($menu as $sort=>$menuval) {
+
                                 if(!empty($menuval->has_parent)){
                                     $children_array[$menuval->has_parent][]=$menuval;
                                 }else{
@@ -70,16 +71,18 @@
                                     }
                                     if($menuval->is_not_link==1){
 ?>
-                                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $menuval->slug;?><span class="caret"></span></a>
+                                        <li class="<? echo $class?>" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $menuval->slug;?><span class="caret"></span></a>
 <?php
                                     }else{
                                          echo '<li ><a href="'.$href.$menuval->slug.'"  '.$scrollancore.' >'.$menuval->title.'</a>';
                                     }
-                                    if(isset($children_array[$menuval->slug])){
+                                    var_dump($menuval->title);
+                                    if(isset($children_array[$menuval->title])){
+                                        var_dump($children_array[$menuval->title]);
 ?>
                                             <ul class="dropdown-menu">
 <?php
-                                        foreach($children_array[$menuval->slug] as $r=>$submenu){
+                                        foreach($children_array[$menuval->title] as $r=>$submenu){
 ?>
                                                <li><a href="<?php echo $href.$submenu->slug; ?>"><?php echo $submenu->title; ?></a></li>
 
@@ -92,9 +95,9 @@
 ?>
                                         </li>
 <?php
+                                }
                             }
                         }
-                    }
 //                        for($i=0;$i<count($menu);$i++){
 //                            $class="";
 //                            if(ONEPAGE=="false"){
@@ -145,6 +148,8 @@
                         </li>
                         <li><a href="login" title="Tra cứu điểm số">Tra cứu điểm số</a></li>
 -->
+
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
