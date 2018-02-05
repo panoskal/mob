@@ -15,6 +15,7 @@ $jsfiles = array(
     'vendor/jquery.mousewheel.min.js',
     'vendor/jquery.mCustomScrollbar.js',
     'vendor/bootstrap.min.js',
+    'vendor/jquery.nicescroll.min.js',
     'vendor/bootstrap-datepicker.min.js',
     'jquery.slicknav.min.js',
     'main.js');

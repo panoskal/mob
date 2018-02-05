@@ -47,11 +47,11 @@ if(ONEPAGE=="true"){
     $meta_description = defined('GENERAL_DESCRIPTION') ? GENERAL_DESCRIPTION : "";
     $meta_keywords = defined('GENERAL_KEYWORDS') ? GENERAL_KEYWORDS : "";
 }else{
-    if($mPageSlug!=='winners'){
+//    if($mPageSlug!=='winners'){
         $pages = Page::checkForDublicatePage($mPageSlug,$lang) ;
         $meta_description = $pages->meta_description;
         $meta_keywords = $pages->meta_keywords;
-    }
+//    }
 }
 $winners=Winner::getAllWinners();
 
