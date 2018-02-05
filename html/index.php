@@ -72,8 +72,6 @@ $winners=Winner::getAllWinners();
             $req_path = $_REQUEST['path'];
             if ($req_path == '') {
                 $title_tag = 'home';
-            } else if ($req_path == 'winners') {
-                $title_tag = WINNERS;
             } else {
                 $page_by_slug = Page::getSinglePageTltleBySlug($req_path);
                 if (!empty($page_by_slug) && is_object($page_by_slug)) {
@@ -101,7 +99,7 @@ $winners=Winner::getAllWinners();
         <![endif]-->
     </head>
 
-    <body class="main">
+    <body class="<?php if (isset($req_path)) {echo ($req_path == 'Home')?'main':preg_replace('/[0-9_]+/', '', $req_path);} ?>">
         <?php if ($session->is_logged_in()) { ?>
         <div class="gotoadmin"><a href="adminpanel"><i class="fa fa-cog" aria-hidden="true"></i></a></div>
         <?php } ?>
