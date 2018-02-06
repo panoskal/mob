@@ -2,58 +2,50 @@
 include_once '../config.php';
 //$lang=DEFAULT_LANG;
 include_once '../templates/lang/'.$_SESSION['lang'].'.php';
-$jsondata = array("status"=>"fail",  "message"=>'<div class="alert alert-danger alert-dismissible" role="alert">
-			  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">'.CLOSE.'</span></button>
-			  <strong>'.ALERT_WARNING.'</strong>'.WRONG_DATA_POSTED.'</div>');
+// load app
 
-if (isset($_POST['task']) && $_POST['task'] == 'checkcupons') {
-    if (isset($_POST['ddd']) && isset($_POST['telefone']) && isset($_POST['senha'])&& isset($_POST['g-recaptcha-response']) && preg_match('/^[1-9][0-9]{9,15}$/', $_POST['ddd'].$_POST['telefone'])){
-//    	check recaptcha
-    	if (verifyReCaptcha($_POST['g-recaptcha-response'])){
-    		$username = PREFIX.$_POST['ddd'].$_POST['telefone'];
-    		$password = cleanInput($_POST['senha']);
-    		if (login ($username, $password)) {
-    			$usercoupons = getDraws ();
-    			$html = "";
-    			if (!$usercoupons) {// oops, error stop all
-    				$jsondata = array("status"=>"fail",  "message"=>'<div class="alert alert-danger alert-dismissible" role="alert">
-    			  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">'.CLOSE.'</span></button>
-    			  <strong>'.ALERT_WARNING.'</strong>'.$_SESSION['error_message'].'</div>');
-    			} else {// no error, continue
-    				if (!isset($usercoupons->draws) || count($usercoupons->draws)==0) {// no draws
-    					$jsondata = array("status"=>"success", "message"=>'<div class="alert alert-warning alert-dismissible" role="alert">
-    			  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">'.CLOSE.'</span></button>
-    			  <strong>'.ALERT_WARNING.'</strong>'.CUPONS_NO_DRAWS_FOUND.'</div>');
-    				} else {
-    					foreach ($usercoupons->draws as $draw) {
-    						$html .= '<div class="row"><div class="col-xs-12 col-sm-5"><dl class="dl-horizontal">';
-    						$drawtickets = getTickets ($draw->id);
-    						$html .= '<dt>'.CUPONS_NAME.':</dt><dd><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> '.$draw->name.'</dd>';
-    						$html .= '<dt>'.CUPONS_DATE_START.':</dt><dd><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> '.date('m-d-Y', strtotime($draw->startDateTime)) .'</dd>';
-    						$html .= '<dt>'.CUPONS_DATE_END.':</dt><dd><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> '.date('m-d-Y', strtotime($draw->endDateTime)) .'</dd>';
-    						$html .= '</dl></div>';
-    						if ($drawtickets=='') {
-    							$html .= '<div class="col-xs-12 col-sm-5">'.CUPONS_NO_TICKETS_FOUND.'</div>';
-    						} else {
-    							$html .= '<div class="col-xs-12 col-sm-5"><strong>'.CUPONS_CUPONS.':</strong> '.$drawtickets.'</div>';
-    						}
-    						$html .= '</div>';
-    					}
-    					$jsondata = array("status"=>"success",  "message"=>'<div class="tickets-result"> '.$html.'</div>');
-    				}
-    			}
 
-    		} else {
-    			$jsondata = array("status"=>"fail",  "message"=>'<div class="alert alert-danger alert-dismissible" role="alert">
-    			  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">'.CLOSE.'</span></button>
-    			  <strong>'.ALERT_WARNING.'</strong>'.$_SESSION['error_message'].'</div>');
-    		}
-    	} else {
-    		$jsondata = array("status"=>"fail",  "message"=>'<div class="alert alert-danger alert-dismissible" role="alert">
-    			  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">'.CLOSE.'</span></button>
-    			  <strong>'.ALERT_WARNING.'</strong>'.WRONG_RECAPTCHA.'</div>');
-    	}
 
-    }
-    echo json_encode($jsondata, true);
+header('Cache-Control: no-cache, must-revalidate');
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+// load config
+if(isset($_REQUEST['msisdn'])){
+		$_REQUEST['msisdn'] = trim(cleanInput($_REQUEST['msisdn']));
+		// if number has a leading + trim it
+		if (substr(($_REQUEST['msisdn']), 0, 1)== '+'){
+			$_REQUEST['msisdn'] = substr($_REQUEST['msisdn'], 1);
+		}
+		// if number has a leading zero trim it
+		if (substr(($_REQUEST['msisdn']), 0, 1)== '0'){
+			$_REQUEST['msisdn'] = substr($_REQUEST['msisdn'], 1);
+		}
+		// if number is without a prefix, apply it here
+		if (substr(($_REQUEST['msisdn']), 0, strlen($prefix))!= $prefix){
+			$_REQUEST['msisdn'] = $prefix.$_REQUEST['msisdn'];
+		}
+		if ($_REQUEST['ajax_action']=='login') {
+			if (!is_numeric($_REQUEST['msisdn'])) {
+				$jsondata = array("status"=>"fail", "message"=>'<div class="alert alert-danger alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	  <strong>'.ALERT_WARNING.'</strong>'.LOGIN_NOT_VALID_CREDENTIALS.'</div>');
+				echo json_encode($jsondata);
+			} else if ($_REQUEST['vercode'] != $_SESSION['security_code']) {
+				$jsondata = array("status"=>"fail", "message"=>'<div class="alert alert-danger alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	  <strong>'.ALERT_WARNING.'</strong>'.LOGIN_NOT_VALID_CAPTCHA.'</div>');
+				echo json_encode($jsondata);
+			} else {
+				if (inforequest($_REQUEST['msisdn'])){
+					$jsondata = array("status"=>"success", "greeting" => LOGIN_WELCOME_BACK.$_SESSION['user_MSISDN'], "message"=>'<div class="alert alert-success alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	  <strong>'.LOGIN_THANKS.'</strong></div>');
+					echo json_encode($jsondata);
+				} else {
+					$jsondata = array("status"=>"fail", "message"=>'<div class="alert alert-danger alert-dismissible" role="alert">
+	  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	  <strong>'.ALERT_WARNING.'</strong>'.$_SESSION['error_message'].'</div>');
+					echo json_encode($jsondata);
+				}
+			}
+		}
 }

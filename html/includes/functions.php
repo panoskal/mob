@@ -386,3 +386,70 @@ function verifyReCaptcha($grecaptcharesponse){
     }
     return false;
 }
+
+
+
+//mobifone
+
+function WSDLTBDCONNECT() {
+	global $error_codes;
+	//initialize soap
+	require_once('php/nusoap.php');
+	// login to web service
+	$client = new nusoap_client(WSDLURL, true);
+	$client->setCredentials(WSDLUSER,WSDLPASS);
+	// FOR DEBUGGING PURPOSES ONLY
+	addtodebugger ('connect to service', $client->request, $client->response);
+	$err = $client->getError();
+	if ($err){
+		// set response to generic error
+		$_SESSION['error_message'] =  $error_codes[0][0];
+		return false;
+	 } else {
+		 return $client;
+	 }
+}
+
+//start inforequest
+function inforequest ($msisdn) {
+	global $error_codes;
+
+	$client = WSDLTBDCONNECT();
+	if ($client) {
+		//set params for login
+		$method="info";
+		$param = array("infoRequest"=> array("msisdn" => $msisdn, "operatorId" => '1', "locale" => 'vi_VN'));
+		$result = $client->call($method, $param);
+		// FOR DEBUGGING PURPOSES ONLY
+		addtodebugger ('infoRequest', $client->request, $client->response);
+		if ($client->fault) { // Web service return error, get error code and set it to verbal
+			$_SESSION['error_message'] = $error_codes[$result["detail"]["sub-code"]][0];
+			return false;
+		} else {
+			$err = $client->getError();
+			if ($err) {// set response to generic error
+				//$_SESSION['error_message'] =  $error_codes[0][0].$err;
+				//return false;
+				return true; // no data present after HTTP headers fix
+			} else {// everything went ok, set user profile to session variables
+				return true;
+			}
+		}
+	} else {
+		return false;
+	}
+}// end inforequest
+
+function addtodebugger ($function, $request_str, $response_str) {
+	if (!isset($_SESSION['debugger'])){
+		$_SESSION['debugger']='';
+	}
+	$_SESSION['debugger'] .=
+	 '<div>'
+	 .'<h2>Upstream '.$function.' Request</h2>'
+	 .'<pre>'.htmlspecialchars($request_str, ENT_QUOTES).'</pre>'
+	 .'<h2>Upstream '.$function.' Response</h2>'
+	 .'<pre>' . htmlspecialchars($response_str, ENT_QUOTES) . '</pre>'
+	 .'</div><br />';
+}
+// end add to debugger

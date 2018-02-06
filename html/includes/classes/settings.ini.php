@@ -1,7 +1,7 @@
 ;<?php return; ?>
 [SQL]
-host = localhost
-user = root
-password =
-dbname = mobifone_locvang
+host = vmewebdb
+user = vmeweb
+password = ssdbhFVIP34Zx
+dbname = vmeweb
 charset = utf8

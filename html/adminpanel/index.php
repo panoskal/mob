@@ -39,7 +39,7 @@ include_once '../config.php';
             <div class="row first-row">
                <div class="top-bar-info col-sm-12">
                     <div class="logout-user">
-                        <a href=".."><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Homepage</a>&nbsp;
+                        <a href="../home"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Homepage</a>&nbsp;
                         <a href='?logout' class='logout'><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
                     </div>
                 </div>

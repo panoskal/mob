@@ -2,8 +2,8 @@
 //meta
 define ('META_ENCODING',"utf-8");
 define ('META_HTML','<html lang="vn" dir="ltr">');
-define ('LANG_DIR', 'ltr');	
-define ('LANG_DIR_OTHER', 'rtl');	
+define ('LANG_DIR', 'ltr');
+define ('LANG_DIR_OTHER', 'rtl');
 define ('ALIGNMENT', 'left');
 define ('ALIGNMENT_OTHER', 'right');
 
@@ -37,8 +37,8 @@ define ('WINNERS_DATE', 'Ngày tháng');
 define ('WINNERS_NAME', 'Họ và tên');
 define ('WINNERS_MSISDN', 'Điện thoại');
 define ('WINNERS_PRIZE', 'Giải thưởng');
-									   
-//various	
+
+//various
 define ('CLICK_FOR_MENU','Nhấn vào cho thực đơn');
 define ('BACK','&nbsp; <a href="javascript:history.go(-1)">trang trước</a>');
 define ('ALERT_WARNING','Báo động ');

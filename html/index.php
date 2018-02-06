@@ -103,7 +103,7 @@ $winners=Winner::getAllWinners();
         <![endif]-->
     </head>
 
-    <body class="<?php if (isset($req_path)) {echo ($req_path == 'Home')?'main':preg_replace('/[0-9_]+/', '', $req_path);} ?>">
+    <body class="<?php if ($req_path == 'home' || $req_path=='') { echo 'main';} else {echo preg_replace('/[0-9_]+/', '', $req_path); } ?>">
         <?php if ($session->is_logged_in()) { ?>
         <div class="gotoadmin"><a href="adminpanel"><i class="fa fa-cog" aria-hidden="true"></i></a></div>
         <?php } ?>
@@ -112,6 +112,12 @@ $winners=Winner::getAllWinners();
         include_once 'templates/skeleton.php';
 
         ?>
+        <div style="clear:both;"></div>
+        <div class="infooter">
+          <div class="container">
+            <div class="row">Copyright © 2015 MobiFone</div>
+          </div>
+        </div>
 
 
     <script  type="text/javascript" src="<?php echo $cache;?>/js/automin.js.php<?PHP echo $ver;?>"></script>
